@@ -7,3 +7,12 @@ services:
       - 8000:8000
     volumes:
       - ./python-server/src:/app/src
+
+  my-express-app:
+    build:
+      context: ./my-express-app
+      dockerfile: Dockerfile
+    ports:
+      - 8001:8001
+    volumes:
+      - ./my-express-app/src:/usr/src/app/src
