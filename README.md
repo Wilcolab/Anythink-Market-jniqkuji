@@ -1,39 +1,111 @@
-# Python Server
+# 🚀 Node Server
 
-This project contains a FastAPI server implemented in Python. It provides two routes for managing a task list.
+A modern ***Express.js*** server implementation designed to manage tasks efficiently. This project demonstrates best practices in API development with containerized deployment and comprehensive Node.js tooling.
 
-## Project Structure
+## 📁 Project Structure
 
-The project has the following files and directories:
+```
+node-server/
+├── src/
+│   ├── index.js          # Express application with route handlers
+│   ├── routes/           # API route definitions
+│   └── middleware/       # Custom middleware functions
+├── package.json          # Project metadata and dependencies
+├── package-lock.json     # Locked dependency versions
+├── Dockerfile           # Container image configuration
+└── docker-compose.yml   # Multi-container orchestration
+```
 
-- `python-server/src/main.py`: This file contains the implementation of the FastAPI server with two routes. It handles adding a task to a list and retrieving the list.
+### Key Components
 
-- `python-server/src/__init__.py`: This file is an empty file that marks the `src` directory as a Python package.
+**`node-server/src/index.js`**
+- ***Core Express.js server*** implementation
+- Handles task addition and retrieval operations
+- RESTful API endpoint definitions and middleware setup
 
-- `python-server/requirements.txt`: This file lists the dependencies required for the FastAPI server and other dependencies.
+**`node-server/src/routes/`**
+- Modular route handlers for tasks
+- Clean separation of concerns
+- Scalable endpoint management
 
-- `python-server/Dockerfile`: This file is used to build a Docker image for the FastAPI server. It specifies the base image, copies the source code into the image, installs the dependencies, and sets the command to run the server.
+**`node-server/src/middleware/`**
+- Custom middleware for error handling
+- Request validation and logging
 
-- `docker-compose.yml`: This file is used to define and run multi-container Docker applications. It specifies the services to run, their configurations, and any dependencies between them.
+**`node-server/package.json`**
+- ***Project metadata and npm dependencies***
+- Defines scripts for development and production
+- Ensures consistent environment setup across installations
 
-## Getting Started
+**`node-server/Dockerfile`**
+- Builds optimized Docker image for the Express server
+- Copies source code and installs Node dependencies via npm
+- Configures container startup command
 
-To run the FastAPI server using Docker, follow these steps:
+**`docker-compose.yml`**
+- Orchestrates multi-container deployments
+- Defines service configurations and inter-service dependencies
 
-- Build and start the Docker containers by running the following command:
+## 🚀 Getting Started
 
-  ```shell
-  docker compose up
-  ```
+### Prerequisites
+- ***Docker and Docker Compose*** installed
+- ***Node.js 18+*** (for local development)
+- Port 3000 available on your system
 
-  This command will build the Docker image for the FastAPI server and start the containers defined in the `docker-compose.yml` file.
+### Installation & Setup
 
-- The FastAPI server should now be running. You can access at port `8000`.
+Install dependencies locally:
 
-## API Routes
+```bash
+cd node-server
+npm install
+```
 
-The FastAPI server provides the following API routes:
+### Running the Server
 
-- `POST /tasks`: Adds a task to the task list. The request body should contain the task details.
+Execute the following command to build and start the application:
 
-- `GET /tasks`: Retrieves the task list.
+```bash
+docker compose up
+```
+
+This command will:
+1. Build the Express Docker image
+2. Start all services defined in `docker-compose.yml`
+3. Launch the server on `http://localhost:3000`
+
+For local development without Docker:
+
+```bash
+npm run dev
+```
+
+---
+
+## 🔌 API Routes
+
+### Add a Task
+**Endpoint:** `POST /tasks`
+- **Purpose:** Creates and adds a new task to the task list
+- **Request Body:** Task details in ***JSON format***
+- **Response:** Confirmation of task creation with task ID
+
+### Retrieve Tasks
+**Endpoint:** `GET /tasks`
+- **Purpose:** Fetches the complete task list
+- **Response:** ***Array of all stored tasks***
+
+### Update a Task
+**Endpoint:** `PUT /tasks/:id`
+- **Purpose:** Updates an existing task
+- **Request Body:** Updated task details
+- **Response:** Updated task object
+
+### Delete a Task
+**Endpoint:** `DELETE /tasks/:id`
+- **Purpose:** Removes a task from the list
+- **Response:** Confirmation of deletion
+
+---
+
